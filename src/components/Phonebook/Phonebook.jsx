@@ -44,6 +44,7 @@ export default function Phonebook({ onFormSubmit }) {
           onChange={handleInputChange}
           type="text"
           name="name"
+          placeholder="Type name"
           pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
           title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
           required
@@ -56,6 +57,7 @@ export default function Phonebook({ onFormSubmit }) {
           value={number}
           onChange={handleInputChange}
           id={numberInputId}
+          placeholder="Type number"
           type="tel"
           name="number"
           pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
@@ -67,59 +69,3 @@ export default function Phonebook({ onFormSubmit }) {
     </form>
   );
 }
-
-// class PhonebookOld extends Component {
-//   state = {
-//     name: '',
-//     number: '',
-//   };
-//   nameInputId = nanoid();
-//   numberInputId = nanoid();
-//   handleInputChange = event => {
-//     const { name, value } = event.target;
-//     this.setState({ [name]: value });
-//   };
-//   handleSubmit = e => {
-//     e.preventDefault();
-//     this.props.onFormSubmit(this.state);
-//     this.reset();
-//   };
-//   reset = () => {
-//     this.setState({ name: '', number: '' });
-//   };
-//   render() {
-//     return (
-//       <form onSubmit={this.handleSubmit}>
-//         <Label htmlFor={this.nameInputId}>
-//           Name
-//           <Input
-//             value={name}
-//             onChange={this.handleInputChange}
-//             type="text"
-//             name="name"
-//             pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-//             title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-//             required
-//             id={this.nameInputId}
-//           />
-//         </Label>
-//         <Label htmlFor={this.numberInputId}>
-//           Number
-//           <Input
-//             value={number}
-//             onChange={this.handleInputChange}
-//             id={this.numberInputId}
-//             type="tel"
-//             name="number"
-//             pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-//             title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-//             required
-//           />
-//         </Label>
-//         <Submit type="submit"> Add contact </Submit>
-//       </form>
-//     );
-//   }
-// }
-
-// export default Phonebook;
