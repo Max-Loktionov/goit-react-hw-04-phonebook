@@ -8,7 +8,7 @@ import Filter from './Filter';
 
 export default function App() {
   const [contacts, setContacts] = useState(() => {
-    return JSON.parse(window.localStorage.getItem('contacts') ?? []);
+    return JSON.parse(window.localStorage.getItem('contacts')) ?? [];
   });
   const [filterText, setFilterText] = useState('');
 
@@ -56,10 +56,17 @@ export default function App() {
       <Section title="Phonebook">
         <Phonebook onFormSubmit={formSubmitHandler} />
       </Section>
-      <Section title="Contacts">
-        <Filter value={filterText} onChange={changeFilter} />
-        <Contacts data={getFiltredContacts()} onDeleteContact={deleteContact} />
-      </Section>
+      {contacts.length > 0 && (
+        <>
+          <Section title="Contacts">
+            <Filter value={filterText} onChange={changeFilter} />
+            <Contacts
+              data={getFiltredContacts()}
+              onDeleteContact={deleteContact}
+            />
+          </Section>
+        </>
+      )}
     </Container>
   );
 }
